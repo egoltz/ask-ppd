@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# env — never commit API keys
+.env.local
+.env
+
+# database — too large for git, regenerate with ingest scripts
+data/portland.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
