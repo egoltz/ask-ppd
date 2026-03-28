@@ -28,11 +28,13 @@ export default function ChatWindow() {
         body: JSON.stringify({ question: q }),
       });
       const data = await res.json();
+      console.log('API response:', data);
       setMessages((prev) => [...prev, { role: 'assistant', ...data }]);
-    } catch {
+    } catch (err) {
+      console.error('Fetch error:', err);
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', answer: 'Something went wrong. Please try again.', chartType: 'none', chartData: null },
+        { role: 'assistant', answer: `Error: ${err.message}`, chartType: 'none', chartData: null },
       ]);
     } finally {
       setLoading(false);

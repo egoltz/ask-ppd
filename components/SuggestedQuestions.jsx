@@ -1,5 +1,5 @@
 'use client';
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 const ALL_QUESTIONS = [
   "How has average police response time for high priority calls changed year over year?",
@@ -16,10 +16,15 @@ const ALL_QUESTIONS = [
   "Which council district has the most property crime?",
 ];
 
+// Always show the same 4 on server; shuffle only after hydration
+const DEFAULT_QUESTIONS = ALL_QUESTIONS.slice(0, 4);
+
 export default function SuggestedQuestions({ onSelect }) {
-  const questions = useMemo(() => {
+  const [questions, setQuestions] = useState(DEFAULT_QUESTIONS);
+
+  useEffect(() => {
     const shuffled = [...ALL_QUESTIONS].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 4);
+    setQuestions(shuffled.slice(0, 4));
   }, []);
 
   return (

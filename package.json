@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",
+    "@libsql/client": "^0.17.2",
     "better-sqlite3": "^11.8.1",
     "next": "^15.2.3",
     "react": "^19.0.0",

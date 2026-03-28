@@ -41,7 +41,8 @@ Return ONLY the raw SQL query. No explanation, no markdown, no code fences.`,
   // Execute SQL
   let results;
   try {
-    results = getDb().prepare(sql).all();
+    const rs = await getDb().execute(sql);
+    results = rs.rows;
   } catch (err) {
     console.error('SQL execution error:', err, '\nSQL:', sql);
     return Response.json({
