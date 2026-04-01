@@ -1,4 +1,5 @@
 import ChatWindow from '@/components/ChatWindow';
+import MethodsDisclosure from '@/components/MethodsDisclosure';
 
 export default function Home() {
   return (
@@ -10,6 +11,9 @@ export default function Home() {
           Ask questions about Portland Police Bureau public safety data
         </p>
       </header>
+
+      {/* Methods disclosure */}
+      <MethodsDisclosure />
 
       {/* Chat */}
       <div className="flex-1 overflow-hidden bg-gray-50">

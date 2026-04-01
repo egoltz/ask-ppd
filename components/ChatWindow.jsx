@@ -27,7 +27,14 @@ export default function ChatWindow() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: q }),
       });
-      const data = await res.json();
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error('Non-JSON response:', text);
+        data = { answer: `Server error: ${text.slice(0, 200)}`, chartType: 'none', chartData: null };
+      }
       console.log('API response:', data);
       setMessages((prev) => [...prev, { role: 'assistant', ...data }]);
     } catch (err) {
