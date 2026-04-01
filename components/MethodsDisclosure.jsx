@@ -25,13 +25,16 @@ export default function MethodsDisclosure() {
             <p className="font-semibold text-gray-700 mb-1">Data sources</p>
             <p>Portland Police Bureau open data, accessed March 29, 2026. Includes crime reports (2015–2026) and 911 dispatch calls (2016–2026).</p>
           </div>
-
+          <div>
+            <p className="font-semibold text-gray-700 mb-1">How it works</p>
+            <p>ASK-PPD uses a two-step pipeline powered by the Anthropic Claude API. When you submit a question, Claude translates it into a SQL query which is executed directly against a local SQLite database containing the raw PPB data. The query results are then passed back to Claude to generate a plain-English answer and chart. No statistics are generated from the model's training data, so every number in a response comes from a live database query. This architecture significantly reduces the risk of hallucinated statistics compared to asking an AI model a data question directly.</p>
+          </div>
           <div>
             <p className="font-semibold text-gray-700 mb-1">Known limitations</p>
             <ul className="space-y-1 list-disc list-inside marker:text-gray-400">
               <li>Reflects reported incidents, not actual crime.</li>
               <li>Policing patterns affect what gets reported and where.</li>
-              <li>No population density normalization.</li>
+              <li>No population density normalization. Areas with high foot traffic (downtown, transit hubs) may appear more dangerous than resident population figures suggest</li>
               <li>Geographic boundaries are police bureau districts, not neighborhoods.</li>
             </ul>
           </div>
